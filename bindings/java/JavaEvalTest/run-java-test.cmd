@@ -1,4 +1,3 @@
-@echo off
 setlocal enableextensions enabledelayedexpansion
 SET sol_dir=%~dpf1
 SET build_path=%~dpf2
@@ -14,5 +13,3 @@ cd "%sol_dir%\bindings\java\JavaEvalTest"
   echo "Running Java Failed"
   EXIT /B 1
 )
-
-
