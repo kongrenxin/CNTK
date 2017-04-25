@@ -26,9 +26,9 @@ if [ "$OS" == "Windows_NT" ]; then
   # Run the evaluation test
   CntkRoot=`cygpath -aw $TEST_ROOT_DIR/../..`
   DllDir=`cygpath -aw $TEST_BIN_DIR` 
-
+  CntkRootCygwin=`cygpath -au $TEST_ROOT_DIR/../..`
   cd $TEST_BIN_DIR
-  "$CntkRoot/bindings/java/JavaEvalTest/run-java-test.cmd" $CntkRoot $DllDir
+  "$CntkRootCygwin/bindings/java/JavaEvalTest/run-java-test.cmd" $CntkRoot $DllDir
 
 else
   # Run the evaluation test
