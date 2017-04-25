@@ -16,7 +16,7 @@ fi
  # Copy pretrained models and data
 TestDataDir=`cygpath -au $CNTK_EXTERNAL_TESTDATA_SOURCE_DIRECTORY/Bindings/Java`
 LocalDataDir="$TEST_ROOT_DIR/../../bindings/java/JavaEvalTest/data"
-if [[ ! -d "$LocalDataDir"]]; then
+if [ ! -d "$LocalDataDir"]; then
   mkdir $LocalDataDir
 fi
 cp $TestDataDir/* $LocalDataDir
