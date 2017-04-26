@@ -1,6 +1,7 @@
 setlocal enableextensions enabledelayedexpansion
 SET sol_dir=%~f1
 
+echo "Generating Java binding..."
 echo %sol_dir%
 
 if not exist "%sol_dir%\bindings\java\Swig\com\microsoft\CNTK\" mkdir "%sol_dir%\bindings\java\Swig\com\microsoft\CNTK\"
