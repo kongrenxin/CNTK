@@ -25,10 +25,10 @@ if [ "$OS" == "Windows_NT" ]; then
   # Run the evaluation test
   DllDir=`cygpath -aw $TEST_BIN_DIR` 
 
+  # TODO: run in TEST_BIN_DIR, so that no need to change PATH. Need to change sample how to read data.
   cd $LocalDataDir/..
   PATH=$PATH:$TEST_BIN_DIR
-  JavaCygwinPath=`cygpath -au $JAVA_HOME`
-  "$JavaCygwinPath/bin/java" -Djava.library.path=$DllDir -classpath "$DllDir\java;$DllDir\java\cntk.jar" Main || (
+  java.exe -Djava.library.path=$DllDir -classpath "$DllDir\java;$DllDir\java\cntk.jar" Main || (
     echo Running Java test failed!
     EXIT /B 1
   )
