@@ -79,9 +79,6 @@
     <ProjectReference>
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
-    <PostBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy </Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="$(ReleaseBuild)">
     <ClCompile>
@@ -107,7 +104,7 @@
   <ItemGroup>
     <CustomBuild Include="cntk_java.i">
       <FileType>Document</FileType>
-      <Command>$(SolutionDir)bindings\java\Swig\generate-java-bindings.cmd $(ProjectDir)</Command>
+      <Command>$(SolutionDir)bindings\java\Swig\generate-java-bindings.cmd $(ProjectDir) $(OutDir)</Command>
       <Outputs>cntk_java_wrap.cxx; cntk_java_warp.h; $(SolutionDir)bindings\java\SwigProxyClasses\cntk.jar</Outputs>
       <AdditionalInputs>$(SolutionDir)bindings\java\Swig\generate-java-bindings.cmd;$(SolutionDir)Source\CNTKv2LibraryDll\API\CNTKLibrary.h;$(SolutionDir)bindings\common\CNTKValueExtend.i;$(SolutionDir)bindings\common\CNTK_ExceptionHandling.i;$(SolutionDir)bindings\common\managed_language_base.i;std_unordered_map.i</AdditionalInputs>
     </CustomBuild>
