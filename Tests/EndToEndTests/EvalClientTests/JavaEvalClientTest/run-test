@@ -21,20 +21,24 @@ if [ ! -d "$LocalDataDir" ]; then
 fi
 cp $TestDataDir/* $LocalDataDir
 
-
 if [ "$OS" == "Windows_NT" ]; then
   # Run the evaluation test
-  CntkRoot=`cygpath -aw $TEST_ROOT_DIR/../..`
   DllDir=`cygpath -aw $TEST_BIN_DIR` 
-  CntkRootCygwin=`cygpath -au $TEST_ROOT_DIR/../..`
-  cd $TEST_BIN_DIR
-  "$CntkRootCygwin/bindings/java/JavaEvalTest/run-java-test.cmd" $CntkRoot $DllDir
+
+  cd $LocalDataDir/..
+  PATH=$PATH:$TEST_BIN_DIR
+  JavaCygwinPath=`cygpath -au $JAVA_HOME`
+  "$JavaCygwinPath/bin/java" -Djava.library.path=$DllDir -classpath "$DllDir\java;$DllDir\java\cntk.jar" Main || (
+    echo Running Java test failed!
+    EXIT /B 1
+  )
 
 else
   # Run the evaluation test
   CntkRoot=$TEST_ROOT_DIR/../..
   
   cd $TEST_BIN_DIR
-  $CntkRoot/bindings/java/JavaEvalTest/run-java-test.bash $CntkRoot $TEST_BUILD_LOCATION/$TEST_FLAVOR/lib
 
+  export LD_LIBRARY_PATH=$TEST_BUILD_LOCATION/$TEST_FLAVOR/lib:$LD_LIBRARY_PATH
+  java -classpath "$TEST_BIN_DIR/java" Main
 fi
