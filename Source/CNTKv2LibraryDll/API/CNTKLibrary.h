@@ -2741,6 +2741,9 @@ namespace CNTK
         template <typename ValueType, typename DestType>
         void CopyVariableValueToImpl(const Variable& outputVariable, std::vector<std::vector<DestType>>& sequences);
 
+#ifdef _WIN32
+        virtual
+#endif
         std::pair<size_t, size_t> GetSequenceAndBatchLength(const Variable& outputVariable);
 
         CNTK_API static void GetSequenceStartsAndLengths(const NDMaskPtr& mask, std::vector<ptrdiff_t>& sequenceBeginIndices, std::vector<size_t>& sequenceLengths, size_t numDynamicAxes);
