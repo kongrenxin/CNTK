@@ -38,7 +38,6 @@ else
   CntkRoot=$TEST_ROOT_DIR/../..
   
   cd $TEST_BIN_DIR
-
   export LD_LIBRARY_PATH=$TEST_BUILD_LOCATION/$TEST_FLAVOR/lib:$LD_LIBRARY_PATH
   java -classpath "$TEST_BIN_DIR/java" Main
 fi
