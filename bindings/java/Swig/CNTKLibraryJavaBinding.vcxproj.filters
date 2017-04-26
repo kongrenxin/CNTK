@@ -34,7 +34,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\common\managed_language_base.i" />
     <None Include="..\..\common\CNTKValueExtend.i" />
     <None Include="..\..\common\CNTK_ExceptionHandling.i" />
   </ItemGroup>
