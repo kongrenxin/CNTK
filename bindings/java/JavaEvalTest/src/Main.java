@@ -21,7 +21,7 @@ public class Main {
 
         DeviceDescriptor device = DeviceDescriptor.UseDefaultDevice();
         File dataPath = new File("data/");
-        Function modelFunc = Function.Load(new File(dataPath, "z.model").getAbsolutePath());
+        Function modelFunc = Function.Load(new File(dataPath, "z.model").getAbsolutePath(), device);
         Variable outputVar = modelFunc.getOutputs().get(0);
         Variable inputVar = modelFunc.getArguments().get(0);
 
