@@ -349,7 +349,7 @@ function find_jdk ()
 
 function default_use_java ()
 {
-        echo no
+        echo yes
 }
 enable_java=$(default_use_java)
 
@@ -575,7 +575,8 @@ do
             enable_java=yes
             if test x$optarg = x
             then
-                echo "Please specify a value for --with-jdk"
+                echo "Invalid value for --with-jdk $optarg"
+                show_help
                 exit 1
             else
                 if check_jdk "$optarg"
@@ -1192,7 +1193,6 @@ if test $enable_java = yes ; then
     if test x${jdk_path} = x
     then
         echo Cannot locate JDK.
-        exit 1
     else
         echo Found JDK at $jdk_path
         echo JAVA_SUPPORT=true >> $config
