@@ -13,7 +13,6 @@
 %rename (_IsPrimitive) CNTK::Function::IsPrimitive;
 %rename (_IsBlock) CNTK::Function::IsBlock;
 
-
 %ignore CNTK::Function::Load(const std::wstring& filepath, const DeviceDescriptor& computeDevice = DeviceDescriptor::UseDefaultDevice(), const Internal::UDFDeserializerPtr& deserializer);
 %ignore CNTK::Function::Load(const char* buffer, size_t length, const DeviceDescriptor& computeDevice = DeviceDescriptor::UseDefaultDevice(), const Internal::UDFDeserializerPtr& deserializer = nullptr);
 // Ignore exposing istream to C# for now. Todo: find a good solution to map C# System.IO.Stream to std::istream.

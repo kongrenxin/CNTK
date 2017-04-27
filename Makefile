@@ -1367,7 +1367,7 @@ java: $(JAVA_LIBS)
 	$(SWIG_PATH)/swig -c++ -java -package com.microsoft.CNTK $(INCLUDEPATH:%=-I%) -I$(BINDINGS_DIR)/common -outdir $(GENERATED_JAVA_DIR) $(JAVA_SWIG_DIR)/cntk_java.i
 	$(JDK_BIN_PATH)/javac $(GENERATED_JAVA_DIR)/*.java
 	cd $(JAVA_SWIG_DIR); $(JDK_BIN_PATH)/jar -cvf cntk.jar com
-	$(CXX) -shared $(COMMON_FLAGS) $(CPPFLAGS) $(CXXFLAGS) -DSWIG $(INCLUDEPATH:%=-I%) $(JDK_INCLUDE_PATH:%=-I%) $(JAVA_SWIG_DIR)/cntk_java_wrap.cxx -L$(LIBDIR) -lcntkmath -lcntklibrary-2.0 -L$(PROTOBUF_PATH)/lib -lprotobuf -o $(LIBDIR)/libCNTKLibraryJavaBinding.so
+	$(CXX) -shared $(COMMON_FLAGS) $(CPPFLAGS) $(CXXFLAGS) -DSWIG $(INCLUDEPATH:%=-I%) $(JDK_INCLUDE_PATH:%=-I%) $(JAVA_SWIG_DIR)/cntk_java_wrap.cxx -L$(LIBDIR) -l$(CNTKMATH) -l$(CNTKLIBRARY) -L$(PROTOBUF_PATH)/lib -lprotobuf -o $(LIBDIR)/libCNTKLibraryJavaBinding.so
 
 ALL += java
 
