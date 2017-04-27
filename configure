@@ -375,6 +375,7 @@ function show_help ()
     echo "  --cuda[=(yes|no)] use cuda GPU $(show_default $(default_use_cuda))"
     echo "  --python[=(yes|no)] with Python bindings $(show_default $(default_use_python))"
     echo "  --java[=(yes|no)] with Java bindings $(show_default $(default_use_java))"
+    echo "  --with-jdk[=directory] $(show_default $(find_jdk))"
     echo "  --mpi[=(yes|no)] use MPI communication $(show_default ${default_use_mpi})"
     echo "  --gdr[=(yes|no)] use GPUDirect RDMA $(show_default ${default_cuda_gdr})"
     echo "  --with-cuda[=directory] $(show_default $(find_cuda))"
