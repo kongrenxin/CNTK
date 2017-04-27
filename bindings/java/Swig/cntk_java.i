@@ -123,11 +123,10 @@
 
 %typemap(javacode) CNTK::Function %{
 
-    /*public static Function Load(byte[] modelBuffer, DeviceDescriptor computeDevice)
+    public static Function Load(byte[] modelBuffer, DeviceDescriptor computeDevice)
     {
-        return Load(modelBuffer, (uint)modelBuffer.Length, computeDevice);
-    }*/
-
+        return Load(modelBuffer, (long)modelBuffer.length, computeDevice);
+    }
 
     // TODO: look at C# implementation and make it look more like that
     private VariableVector argumentVector;
