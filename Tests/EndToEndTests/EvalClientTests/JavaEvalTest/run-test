@@ -13,13 +13,18 @@ if [[ -z "$CNTK_EXTERNAL_TESTDATA_SOURCE_DIRECTORY" || ! -d "$CNTK_EXTERNAL_TEST
   exit 1
 fi
 
- # Copy pretrained models and data
-TestDataDir=`cygpath -au "$CNTK_EXTERNAL_TESTDATA_SOURCE_DIRECTORY/Bindings/Java"`
+# Copy pretrained models and data
+if [ "$OS" == "Windows_NT" ]; then
+  TestDataDir=`cygpath -au "$CNTK_EXTERNAL_TESTDATA_SOURCE_DIRECTORY/Bindings/Java"`
+else
+  TestDataDir="$CNTK_EXTERNAL_TESTDATA_SOURCE_DIRECTORY/Bindings/Java"
+fi
+
 LocalDataDir="$TEST_ROOT_DIR/../../bindings/java/JavaEvalTest/data"
 if [ ! -d "$LocalDataDir" ]; then
-  mkdir $LocalDataDir
+  mkdir "$LocalDataDir"
 fi
-cp $TestDataDir/* $LocalDataDir
+cp "$TestDataDir"/* "$LocalDataDir"
 
 if [ "$OS" == "Windows_NT" ]; then
   # Run the evaluation test
