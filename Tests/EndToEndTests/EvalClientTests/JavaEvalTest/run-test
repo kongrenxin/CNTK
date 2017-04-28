@@ -14,7 +14,7 @@ if [[ -z "$CNTK_EXTERNAL_TESTDATA_SOURCE_DIRECTORY" || ! -d "$CNTK_EXTERNAL_TEST
 fi
 
  # Copy pretrained models and data
-TestDataDir=`cygpath -au $CNTK_EXTERNAL_TESTDATA_SOURCE_DIRECTORY/Bindings/Java`
+TestDataDir=`cygpath -au "$CNTK_EXTERNAL_TESTDATA_SOURCE_DIRECTORY/Bindings/Java"`
 LocalDataDir="$TEST_ROOT_DIR/../../bindings/java/JavaEvalTest/data"
 if [ ! -d "$LocalDataDir" ]; then
   mkdir $LocalDataDir
@@ -23,15 +23,12 @@ cp $TestDataDir/* $LocalDataDir
 
 if [ "$OS" == "Windows_NT" ]; then
   # Run the evaluation test
-  DllDir=`cygpath -aw $TEST_BIN_DIR` 
+  DllDir=`cygpath -aw "$TEST_BIN_DIR"` 
 
   # TODO: run in TEST_BIN_DIR, so that no need to change PATH. Need to change sample how to read data.
   cd $LocalDataDir/..
-  PATH=$PATH:$TEST_BIN_DIR
-  java.exe -Djava.library.path=$DllDir -classpath "$DllDir\java;$DllDir\java\cntk.jar" Main || (
-    echo Running Java test failed!
-    EXIT /B 1
-  )
+  PATH="$PATH:$TEST_BIN_DIR"
+  java.exe -Djava.library.path=$DllDir -classpath "$DllDir\java;$DllDir\java\cntk.jar" Main 
 
 else
   # Run the evaluation test

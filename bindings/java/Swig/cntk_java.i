@@ -1,4 +1,4 @@
-//JNI defines UNUSED macro as well, undefining it so it doesnt conflict with CNTKs
+//JNI defines UNUSED macro as well, undefining it so it doesn't conflict with CNTK's
 %{
 #undef UNUSED
 %}
