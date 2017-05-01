@@ -1,9 +1,8 @@
 dataDir: .
 
 tags: 
-  # Only for Windows CPU
-  - bvt-l (build_sku == 'cpu') and (flavor == 'release')
-  - nightly-l (build_sku == 'cpu') and (flavor == 'release')
+  - bvt-l (build_sku == 'cpu')
+  - nightly-l (build_sku == 'cpu')
 
 testCases:
   Test case EvaluateSingleImage:

@@ -28,18 +28,20 @@ cp "$TestDataDir"/* "$LocalDataDir"
 
 if [ "$OS" == "Windows_NT" ]; then
   # Run the evaluation test
-  DllDir=`cygpath -aw "$TEST_BIN_DIR"` 
+  DllDir=`cygpath -aw "$TEST_BIN_DIR"`
 
   # TODO: run in TEST_BIN_DIR, so that no need to change PATH. Need to change sample how to read data.
   cd $LocalDataDir/..
   PATH="$PATH:$TEST_BIN_DIR"
-  java.exe -Djava.library.path=$DllDir -classpath "$DllDir\java;$DllDir\java\cntk.jar" Main 
+  java.exe -Djava.library.path=$DllDir -classpath "$DllDir\java;$DllDir\java\cntk.jar" Main
 
 else
   # Run the evaluation test
   CntkRoot=$TEST_ROOT_DIR/../..
-  
-  cd $TEST_BIN_DIR
-  export LD_LIBRARY_PATH=$TEST_BUILD_LOCATION/$TEST_FLAVOR/lib:$LD_LIBRARY_PATH
-  java -classpath "$TEST_BIN_DIR/java" Main
+
+  TEST_LIB_DIR=$TEST_BUILD_LOCATION/$TEST_FLAVOR/lib
+  TEST_LIB_JAVA_DIR=$TEST_LIB_DIR/java
+  export LD_LIBRARY_PATH=$TEST_LIB_DIR:$LD_LIBRARY_PATH
+  cd $LocalDataDir/..
+  java -classpath "$TEST_LIB_JAVA_DIR:$TEST_LIB_JAVA_DIR/cntk.jar" Main
 fi
