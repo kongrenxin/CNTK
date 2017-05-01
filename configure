@@ -333,10 +333,10 @@ enable_python=$(default_use_python)
 function check_jdk ()
 {
     local jdk_dir="$1"
-    local jdk_bin="$jdk_dir/$jdk_check"
+    local jdk_file="$jdk_dir/$jdk_check"
 
     # Check that jni header exists
-    test -f "$jdk_bin" || return $?
+    test -f "$jdk_file" || return $?
 
     echo "$jdk_dir"
 }
