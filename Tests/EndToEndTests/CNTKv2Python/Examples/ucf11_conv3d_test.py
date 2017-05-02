@@ -37,6 +37,9 @@ def test_ucf11_conv3d_error(device_id):
     set_computation_network_trace_level(1)
     set_fixed_random_seed(1)
 
+    # TODO VideoReader should process paths relative to the map file?
+    os.chdir(base_path)
+
     # For performance reason, we will use test data for both training and testing.
     num_output_classes = 11
     train_reader = VideoReader(os.path.join(base_path, 'test_map.csv'), num_output_classes, True)
