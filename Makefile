@@ -1367,9 +1367,10 @@ java: $(JAVA_LIBS)
 	rm -f $(GENERATED_JAVA_DIR)/*.java
 	$(SWIG_PATH)/swig -c++ -java -package com.microsoft.CNTK $(INCLUDEPATH:%=-I%) -I$(BINDINGS_DIR)/common -outdir $(GENERATED_JAVA_DIR) $(JAVA_SWIG_DIR)/cntk_java.i
 	$(JDK_BIN_PATH)/javac $(GENERATED_JAVA_DIR)/*.java
-	cd $(JAVA_SWIG_DIR); $(JDK_BIN_PATH)/jar -cvf cntk.jar com; mkdir -p $(LIBDIR)/java && cp cntk.jar $(LIBDIR)/java
-	javac -cp $(JAVA_SWIG_DIR) $(JAVA_TEST_DIR)/src/Main.java -s $(JAVA_TEST_DIR)/src && cp $(JAVA_TEST_DIR)/src/Main.class $(LIBDIR)/java
-	$(CXX) -shared $(COMMON_FLAGS) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDEPATH:%=-I%) $(JDK_INCLUDE_PATH:%=-I%) $(JAVA_SWIG_DIR)/cntk_java_wrap.cxx -L$(LIBDIR) -l$(CNTKMATH) -l$(CNTKLIBRARY) -L$(PROTOBUF_PATH)/lib -lprotobuf -o $(LIBDIR)/Cntk.Core.JavaBinding-$(CNTK_COMPONENT_VERSION).so
+	mkdir -p $(LIBDIR)/java
+	cd $(JAVA_SWIG_DIR) && $(JDK_BIN_PATH)/jar -cvf cntk.jar com && cp cntk.jar $(LIBDIR)/java
+	javac -cp $(JAVA_SWIG_DIR) $(JAVA_TEST_DIR)/src/Main.java -d $(LIBDIR)/java
+	$(CXX) -shared $(COMMON_FLAGS) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDEPATH:%=-I%) $(JDK_INCLUDE_PATH:%=-I%) $(JAVA_SWIG_DIR)/cntk_java_wrap.cxx -L$(LIBDIR) -l$(CNTKMATH) -l$(CNTKLIBRARY) -L$(PROTOBUF_PATH)/lib -lprotobuf -o $(LIBDIR)/libCntk.Core.JavaBinding-$(CNTK_COMPONENT_VERSION).so
 
 ALL += java
 
