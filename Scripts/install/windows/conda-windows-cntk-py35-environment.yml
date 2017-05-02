@@ -1,4 +1,8 @@
 name: cntk-py35
+channels:
+- defaults
+# For imageio:
+- pyzo
 dependencies:
 - h5py=2.6.0=np111py35_2
 - jupyter=1.0.0=py35_3
@@ -10,6 +14,7 @@ dependencies:
 - pip=8.1.2=py35_0
 - python=3.5.2=0
 - pyyaml=3.12=py35_0
+- imageio=1.2=py35_0
 - scipy=0.18.1=np111py35_0
 - seaborn=0.7.1=py35_0
 - setuptools=27.2.0=py35_1
