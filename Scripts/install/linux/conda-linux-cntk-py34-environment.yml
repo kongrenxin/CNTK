@@ -1,6 +1,8 @@
 name: cntk-py34
 channels: !!python/tuple
 - defaults
+# For imageio:
+- pyzo
 dependencies:
 - h5py=2.6.0=np111py34_2
 - imageio=1.2=py34_0

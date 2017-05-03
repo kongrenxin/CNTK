@@ -1,6 +1,8 @@
 name: cntk-py27
 channels: !!python/tuple
 - defaults
+# For imageio:
+- pyzo
 dependencies:
 - enum34=1.1.6=py27_0
 - h5py=2.6.0=np111py27_2
